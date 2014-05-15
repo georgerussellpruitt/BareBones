@@ -14,4 +14,6 @@
  // config
 include("config.php");
  
+ echo "<pre>".var_dump($CFG)."</pre>";
+ echo "<pre>".var_dump($SITE)."</pre>";
 ?>
