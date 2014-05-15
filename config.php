@@ -13,13 +13,15 @@
 
 define("BAREBONES_CORE", true);
 
-// toggle DEBUG mode
-$CFG->debug = true;
+
 
 // set the $CFG global object
 unset($CFG);
 global $CFG; // make object globally accessible
 $CFG = new stdClass(); // make into object
+
+// toggle DEBUG mode
+$CFG->debug = true;
 
 // determine OS type
 $CFG->ostype = php_uname("s");
