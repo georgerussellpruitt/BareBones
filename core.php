@@ -8,7 +8,12 @@ defined("BAREBONES_CORE") || die("External linking to the file is restricted");
 
 // global user object
 // not used yet
-//include($SITE->src."user.php");
+
+// include the site global
+include("site.php");
+
+// call the functions
+include($SITE->lib."functions.php");
 
 // call the module loading system
 include($SITE->lib."ModuleHandler.class.php");

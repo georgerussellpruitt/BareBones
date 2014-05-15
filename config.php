@@ -13,13 +13,15 @@
 
 define("BAREBONES_CORE", true);
 
-// toggle DEBUG mode
-$CFG->debug = true;
+
 
 // set the $CFG global object
 unset($CFG);
 global $CFG; // make object globally accessible
 $CFG = new stdClass(); // make into object
+
+// toggle DEBUG mode
+$CFG->debug = true;
 
 // determine OS type
 $CFG->ostype = php_uname("s");
@@ -41,16 +43,16 @@ else
     $CFG->dbpass = "";
     $CFG->debug = true;
     $CFG->ssl = false;
-    $CFG->domain = "georgerussellpruitt.kd.io";
-    $CFG->cwd = "barebones";
+    $CFG->domain = $_SERVER['SERVER_ADDR'];
+    $CFG->cwd = dirname(__FILE__);
     $CFG->dataroot = __DIR__;
     if($CFG->ssl)
         {
-            $CFG->wwwroot = "https://".$CFG->domain."/".$CFG->cwd;
+            $CFG->wwwroot = "https://".$CFG->domain.$CFG->cwd;
         }
     else
         {
-            $CFG->wwwroot = "http://".$CFG->domain."/".$CFG->cwd;
+            $CFG->wwwroot = "http://".$CFG->domain.$CFG->cwd;
         }
 
 if($CFG->debug)
@@ -63,8 +65,5 @@ else
         error_reporting(0);
     }
 
-// site global object
-include("./src/site.php");
-
 // system core
-include($SITE->src."core.php");
+include("core.php");
