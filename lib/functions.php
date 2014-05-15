@@ -19,33 +19,55 @@ function get_header( $template = false ) {
 	$header_html = file_get_contents($filename);
 	return $header_html;
 	*/
-	$output = '<!DOCTYPE html>\n'
-			. '<html>\n'
-			. '<head>\n'
-			. '<title></title>\n';
-	$output .= '<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>\n';
-	$output .= '<link rel="stylesheet" type="text/css" href="'.$CFG->style.'">\n';
-	$output .= '</head>\n';
-	$output .= '<body>\n';
-	$output .= '	<div id="container-wrapper">\n';
-	$output .= '		<div id="container">\n';
-	$output .= '			<div id="header-wrapper">\n';
-	$output .= '				<div id="header"></div>\n';
-	$output .= '			</div>\n';
-	$output .= '			<div id="content-wrapper">\n';
-	$output .= '				<div id="content">\n';
+	$output = '<!DOCTYPE html>';
+	$output .= "\n\r";
+	$output .= '<html>';
+	$output .= "\n\r";
+	$output .= '<head>';
+	$output .= "\n\r";
+	$output .= '<title></title>';
+	$output .= "\n\r";
+	$output .= '<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>';
+	$output .= "\n\r";
+	$output .= '<link rel="stylesheet" type="text/css" href="'.$CFG->style.'">';
+	$output .= "\n\r";
+	$output .= '</head>';
+	$output .= "\n\r";
+	$output .= '<body>';
+	$output .= "\n\r";
+	$output .= '	<div id="container-wrapper">';
+	$output .= "\n\r";
+	$output .= '		<div id="container">';
+	$output .= "\n\r";
+	$output .= '			<div id="header-wrapper">';
+	$output .= "\n\r";
+	$output .= '				<div id="header"></div>';
+	$output .= "\n\r";
+	$output .= '			</div>';
+	$output .= "\n\r";
+	$output .= '			<div id="content-wrapper">';
+	$output .= "\n\r";
+	$output .= '				<div id="content">';
+	$output .= "\n\r";
 	return $output;
 }
 
 function get_footer( $template = false ){
 	global $CFG;
-	$output = '					</div>\n';
-	$output .= '				</div>\n';
-	$output .= '			</div>\n';
-	$output .= '		</div>\n';
-	$output .= '	</div>\n';
-	$output .= '</body>\n';
-	$output .= '</html>\n';
+	$output = '					</div>';
+	$output .= "\n\r";
+	$output .= '				</div>';
+	$output .= "\n\r";
+	$output .= '			</div>';
+	$output .= "\n\r";
+	$output .= '		</div>';
+	$output .= "\n\r";
+	$output .= '	</div>';
+	$output .= "\n\r";
+	$output .= '</body>';
+	$output .= "\n\r";
+	$output .= '</html>';
+	$output .= "\n\r";
 	return $output;
 }
 

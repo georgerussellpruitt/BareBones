@@ -43,16 +43,16 @@ else
     $CFG->dbpass = "";
     $CFG->debug = true;
     $CFG->ssl = false;
-    $CFG->domain = "georgerussellpruitt.kd.io";
-    $CFG->cwd = "barebones";
+    $CFG->domain = $_SERVER['SERVER_ADDR'];
+    $CFG->cwd = dirname(__FILE__);
     $CFG->dataroot = __DIR__;
     if($CFG->ssl)
         {
-            $CFG->wwwroot = "https://".$CFG->domain."/".$CFG->cwd;
+            $CFG->wwwroot = "https://".$CFG->domain.$CFG->cwd;
         }
     else
         {
-            $CFG->wwwroot = "http://".$CFG->domain."/".$CFG->cwd;
+            $CFG->wwwroot = "http://".$CFG->domain.$CFG->cwd;
         }
 
 if($CFG->debug)
