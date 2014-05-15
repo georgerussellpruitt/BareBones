@@ -29,7 +29,7 @@ class ModuleHandler {
 				throw new BareBonesException("Loading of plugin <strong>$name</strong> failed, require failed!", 9002, NULL);
 			}
 			// update modules array
-			$this->modules[$name] = TRUE;
+			$this->modules[$name] = new $name();
 			return TRUE;
 		}
 		return FALSE;
@@ -68,10 +68,5 @@ class ModuleHandler {
 		}
     }
 
-}
-
-unset($MODULES);
-$MODULES = new ModuleHandler();
-global $MODULES; // make globally accessible
-	
+}	
 ?>
