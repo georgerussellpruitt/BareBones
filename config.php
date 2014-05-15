@@ -66,4 +66,4 @@ else
     }
 
 // system core
-include($SITE->src."core.php");
+include("core.php");

@@ -8,7 +8,7 @@ defined("BAREBONES_CORE") || die("External linking to the file is restricted");
 class ModuleHandler {
     
     function __construct(){
-        private $this->modules = array();
+        $this->modules = array();
     }
     
     function __destruct(){
