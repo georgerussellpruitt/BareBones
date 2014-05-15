@@ -65,8 +65,5 @@ else
         error_reporting(0);
     }
 
-// site global object
-include("./src/site.php");
-
 // system core
 include($SITE->src."core.php");
