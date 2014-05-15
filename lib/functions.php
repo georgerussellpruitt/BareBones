@@ -9,6 +9,7 @@
  */
 function get_header( $template = false ) {
 	global $CFG;
+	// TODO fix to pull templates
 	// following will be used later
 	/*
 	if($template) {
@@ -29,7 +30,7 @@ function get_header( $template = false ) {
 	$output .= "\n\r";
 	$output .= '<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>';
 	$output .= "\n\r";
-	$output .= '<link rel="stylesheet" type="text/css" href="'.$CFG->style.'">';
+	$output .= '<link rel="stylesheet" type="text/css" href="'.$CFG->style.'style.css">';
 	$output .= "\n\r";
 	$output .= '</head>';
 	$output .= "\n\r";
@@ -52,7 +53,15 @@ function get_header( $template = false ) {
 	return $output;
 }
 
+/*
+ * 
+ * get_footer($template)
+ *
+ * pulls footer uses default if none provided
+ *
+ */
 function get_footer( $template = false ){
+	// TODO fix to pull templates
 	global $CFG;
 	$output = '					</div>';
 	$output .= "\n\r";

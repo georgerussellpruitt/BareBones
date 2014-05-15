@@ -27,11 +27,11 @@ $CFG->debug = true;
 $CFG->ostype = php_uname("s");
 if( $CFG->ostype == "Linux" || $CFG->ostype == "FreeBSD" || $CFG->ostype == "Unix")
     {
-        $CFG->sep = "\\";
+		$CFG->sep = "/";
     }
 else
     {
-        $CFG->sep = "/";
+        $CFG->sep = "\\";
     }
     
 
@@ -44,26 +44,26 @@ else
     $CFG->debug = true;
     $CFG->ssl = false;
     $CFG->domain = $_SERVER['SERVER_ADDR'];
-    $CFG->cwd = dirname(__FILE__);
-    $CFG->dataroot = __DIR__;
-    if($CFG->ssl)
-        {
-            $CFG->wwwroot = "https://".$CFG->domain.$CFG->cwd;
-        }
-    else
-        {
-            $CFG->wwwroot = "http://".$CFG->domain.$CFG->cwd;
-        }
+    $CFG->cwd = basename( __DIR__ );
+    $CFG->dataroot = __DIR__ . "/";
+	$CFG->url_base = $CFG->domain."/";
+	$CFG->not_retained = true;
+	if($CFG->not_retained) {
+		$CFG->url_base .= $CFG->cwd."/";
+	}
+    if($CFG->ssl) {
+        $CFG->url = "https://".$CFG->url_base;
+	} else {
+		$CFG->url = "http://".$CFG->url_base;
+	}
+	$CFG->style = $CFG->url."style/";
+	
+if($CFG->debug) {
+	error_reporting(E_ALL); // Report all PHP errors (see changelog)
+} else { 
+	error_reporting(0);
+}
 
-if($CFG->debug)
-    {
-        // Report all PHP errors (see changelog)
-        error_reporting(E_ALL);
-    }
-else
-    {
-        error_reporting(0);
-    }
 
 // system core
 include("core.php");
