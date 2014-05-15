@@ -11,5 +11,4 @@ defined("BAREBONES_CORE") || die("External linking to the file is restricted");
     global $SITE; // make globally accessible
     $SITE = new stdClass(); // make into object
 
-$SITE->src = $CFG->dataroot."/src/";
 $SITE->lib = $CFG->dataroot."/lib/";
