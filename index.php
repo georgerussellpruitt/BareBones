@@ -25,6 +25,8 @@ foreach($SITE as $key => $value){
 	echo "<li>".$key.": ".$value."</li>\n\r";
 }
 echo "</ul>\n\r";
+?>
 
+<?php
 echo get_footer();
 ?>
