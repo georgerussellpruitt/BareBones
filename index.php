@@ -9,7 +9,7 @@
  *
  * All requests are handled by this script.
  *
- */
+**/
  
 // config
 
@@ -20,7 +20,7 @@ include("config.php");
 
 
 // call controller
-
+include("includes/RequestController.php");
 
 ?>
 
@@ -28,8 +28,7 @@ include("config.php");
 
 <?php
 
-echo htmldump($CFG,true);
-echo htmldump($SITE);
+echo htmldump($REQUEST);
 
 ?>
 

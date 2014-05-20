@@ -88,7 +88,6 @@ function get_footer( $template = false ){
  *
 **/
 function htmldump($data,$skip_null = false){
-	$output = $CFG;
 
 	if ( !is_array($data) && !is_object($data) ) {
 	// parse as <pre>
