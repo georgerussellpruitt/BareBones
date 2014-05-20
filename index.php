@@ -1,9 +1,9 @@
 <?php
 
 /*
- * @script index.php
+ * @script	index.php
  * @author: George Russell Pruitt <pruitt.russell@gmail.com>
- * @library PHPBareBones
+ * @library BareBones
  *
  * Main index file
  *
@@ -12,21 +12,25 @@
  */
  
 // config
+
+$DEBUG = 1;
 include("config.php");
 
-echo get_header();
-echo "<ul>\n\r";
-foreach($CFG as $key => $value){
-	echo "<li>".$key.": ".$value."</li>\n\r";
-}
-echo "</ul>\n\r";
-echo "<ul>\n\r";
-foreach($SITE as $key => $value){
-	echo "<li>".$key.": ".$value."</li>\n\r";
-}
-echo "</ul>\n\r";
+// call request handler
+
+
+// call controller
+
+
 ?>
 
+<?php echo get_header(); ?>
+
 <?php
-echo get_footer();
+
+echo htmldump($CFG,true);
+echo htmldump($SITE);
+
 ?>
+
+<?php echo get_footer(); ?>

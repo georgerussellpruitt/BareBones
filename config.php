@@ -60,6 +60,7 @@ else
 	
 if($CFG->debug) {
 	error_reporting(E_ALL); // Report all PHP errors (see changelog)
+	ini_set('error_reporting', E_ALL);
 } else { 
 	error_reporting(0);
 }

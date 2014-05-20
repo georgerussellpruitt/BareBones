@@ -80,4 +80,73 @@ function get_footer( $template = false ){
 	return $output;
 }
 
+
+/*
+ * htmldump($data)
+ *
+ * processes an array into html for debugging
+ *
+**/
+function htmldump($data,$skip_null = false){
+	$output = $CFG;
+
+	if ( !is_array($data) && !is_object($data) ) {
+	// parse as <pre>
+		$output = "<p class='debug'>\n";
+		$output .= gettype($data)."\n";
+		$output .= "</p>\n";
+	} else if ( is_object($data) ) {
+		$output = "\t<div id='debugging' class='debug'>\n\r";
+		if($skip_null){
+			$output .= "\t\t<span ".'style="color:#f00;"'.">All null values being skipped</span>\n\r";
+		}
+		foreach ($data as $key => $value) {
+			if( $skip_null ){
+				if( !empty($value) ) {
+					$output .= "\t\t[<strong>".$key."</strong>]: [".$value."] \n\r";
+				}
+			} else {
+				$output .= "\t\t[<strong>".$key."</strong>]: [".$value."] \n\r";
+			}
+		}
+		$output .= "\t</div>\n\r";
+	}	else {
+		if ( is_array($data[0]) ) {
+			foreach($data as $array) {
+				$output = "\t<div id='debugging' class='debug'>\n\r";
+				if($skip_null){
+					$output .= "\t\t<span>All null values being skipped</span>\n\r";
+				}
+				foreach ($data as $key => $value) {
+					if( $skip_null ){
+						if( !empty($value) ) {
+							$output .= "\t\t[<strong>".$key."</strong>]: [".$value."] \n\r";
+						}
+					} else {
+						$output .= "\t\t[<strong>".$key."</strong>]: [".$value."] \n\r";
+					}
+			}
+				$output .= "\t</div>\n\r";
+			}
+		} else { // parse as $key => $value	
+			$output = "\t<div id='debugging' class='debug'>\n\r";
+			if($skip_null){
+				$output .= "\t\t<span>All null values being skipped</span>\n\r";
+			}
+			foreach ($data as $key => $value) {
+				if( $skip_null ){
+					if( !empty($value) ) {
+						$output .= "\t\t[<strong>".$key."</strong>]: [".$value."] \n\r";
+					}
+				} else {
+					$output .= "\t\t[<strong>".$key."</strong>]: [".$value."] \n\r";
+				}
+			}
+			$output .= "\t</div>\n\r";
+		}
+	}
+	return nl2br($output);
+
+	//return $output;
+}
 ?>
