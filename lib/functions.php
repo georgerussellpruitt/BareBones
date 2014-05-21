@@ -87,12 +87,12 @@ function get_footer( $template = false ){
  * processes an array into html for debugging
  *
 **/
-function htmldump($data,$skip_null = false){
+function debug_dump($data,$skip_null = false){
 
-	if ( !is_array($data) && !is_object($data) ) {
+	if ( is_string($data) ) {
 	// parse as <pre>
 		$output = "<p class='debug'>\n";
-		$output .= gettype($data)."\n";
+		$output .= $data."\n";
 		$output .= "</p>\n";
 	} else if ( is_object($data) ) {
 		$output = "\t<div id='debugging' class='debug'>\n\r";

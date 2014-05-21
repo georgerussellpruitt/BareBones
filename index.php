@@ -20,7 +20,7 @@ include("config.php");
 
 
 // call controller
-include("includes/RequestController.php");
+include("lib/RequestController.php");
 
 ?>
 
@@ -28,7 +28,11 @@ include("includes/RequestController.php");
 
 <?php
 
-echo htmldump($REQUEST);
+echo debug_dump($REQUEST);
+
+foreach($REQUEST->parts as $key => $value) {
+	echo "<pre>[<strong>".$key."</strong>]: [".$value."]</pre>";
+}
 
 ?>
 
