@@ -30,10 +30,16 @@ include("lib/RequestController.php");
 
 echo debug_dump($REQUEST);
 
-foreach($REQUEST->parts as $key => $value) {
-	echo "<pre>[<strong>".$key."</strong>]: [".$value."]</pre>";
+foreach($REQUEST as $key => $value) {
+	if( is_array($value) ){
+		echo "<pre><strong>[$key]</strong></pre>\n";
+		foreach($value as $temp_key => $temp_val) {
+			echo "\t<pre>[<strong>".$temp_key."</strong>]: [".$temp_val."]</pre>\n";
+		}
+	} else {
+		echo "<pre>[<strong>".$key."</strong>]: [".$value."]</pre>";
+	}
 }
 
 ?>
-
 <?php echo get_footer(); ?>

@@ -21,6 +21,8 @@ $REQUEST->original = substr($_SERVER['REQUEST_URI'],1);
 
 // break URI into parts
 $REQUEST->parts = explode("?",$REQUEST->original,2);
+$REQUEST->base_parts = explode("/",$REQUEST->parts[0]);
+$REQUEST->query_parts = explode("&",$REQUEST->parts[1]);
 $temp = explode("&",$REQUEST->parts[1]);
 foreach($temp as $req_var){
 	$temp_array = explode("=",$req_var);
