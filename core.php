@@ -17,3 +17,5 @@ include($SITE->lib."functions.php");
 
 // call the module loading system
 include($SITE->lib."ModuleHandler.class.php");
+
+// closing tag left off intentionally to prevent white space
