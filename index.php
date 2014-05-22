@@ -21,15 +21,13 @@ include("config.php");
 
 // call controller
 include("lib/RequestController.php");
-
 ?>
-
 <?php echo get_header(); ?>
-
 <?php
 
-echo debug_dump($REQUEST);
+//echo debug_dump($REQUEST);
 
+/*
 foreach($REQUEST as $key => $value) {
 	if( is_array($value) ){
 		echo "<pre><strong>[$key]</strong></pre>\n";
@@ -40,6 +38,8 @@ foreach($REQUEST as $key => $value) {
 		echo "<pre>[<strong>".$key."</strong>]: [".$value."]</pre>";
 	}
 }
+*/
 
+echo debug_dump($path_info);
 ?>
 <?php echo get_footer(); ?>
