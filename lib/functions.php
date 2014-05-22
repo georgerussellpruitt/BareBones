@@ -28,7 +28,8 @@ function get_header( $template = false ) {
 	$output .= "\n\r";
 	$output .= '<title></title>';
 	$output .= "\n\r";
-	$output .= '<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>';
+	$output .= '<script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>';
+	$output .= '<script src="https://code.jquery.com/ui/1.10.4/jquery-ui.min.js"></script>';
 	$output .= "\n\r";
 	$output .= '<link rel="stylesheet" type="text/css" href="'.$CFG->url.'style.css">';
 	$output .= "\n\r";
@@ -87,7 +88,7 @@ function get_footer( $template = false ){
  *
 **/
 function debug_dump($data,$skip_null = false){
-
+	echo "<h1 class='debug'>Begin Debug</h1>";
 	if ( is_string($data) ) {
 	// parse as <pre>
 		$output = "<p class='debug'>\n";
