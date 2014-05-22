@@ -30,7 +30,7 @@ function get_header( $template = false ) {
 	$output .= "\n\r";
 	$output .= '<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>';
 	$output .= "\n\r";
-	$output .= '<link rel="stylesheet" type="text/css" href="'.$CFG->style.'style.css">';
+	$output .= '<link rel="stylesheet" type="text/css" href="'.$CFG->url.'style.css">';
 	$output .= "\n\r";
 	$output .= '</head>';
 	$output .= "\n\r";
@@ -76,13 +76,12 @@ function get_footer( $template = false ){
 	$output .= '</body>';
 	$output .= "\n\r";
 	$output .= '</html>';
-	$output .= "\n\r";
 	return $output;
 }
 
 
 /*
- * htmldump($data)
+ * debug_dump($data)
  *
  * processes an array into html for debugging
  *
@@ -107,11 +106,10 @@ function debug_dump($data,$skip_null = false){
 			} else {
 				$output .= "\t\t[<strong>".$key."</strong>]: [".$value."] \n\r";
 			}
-			echo "<p>loop</p>";
 		}
 		$output .= "\t</div>\n\r";
 	}	else {
-		if ( is_array($data[0]) ) {
+		if ( is_array(@$data[0]) ) {
 			foreach($data as $array) {
 				$output = "\t<div id='debugging' class='debug'>\n\r";
 				if($skip_null){

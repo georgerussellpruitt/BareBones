@@ -12,18 +12,15 @@
 **/
  
 // config
-
-$DEBUG = 1;
 include("config.php");
 
-// call request handler
+$DEBUG = 1;
 
-
-// call controller
+// call request controller
 include("lib/RequestController.php");
-?>
-<?php echo get_header(); ?>
-<?php
+
+echo get_header();
+
 
 //echo debug_dump($REQUEST);
 
@@ -41,5 +38,7 @@ foreach($REQUEST as $key => $value) {
 */
 
 echo debug_dump($path_info);
+echo debug_dump($REQUEST);
+
+echo get_footer();
 ?>
-<?php echo get_footer(); ?>
