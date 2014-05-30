@@ -27,7 +27,7 @@ echo get_header();
 
 //echo debug_dump($REQUEST);
 
-/*
+
 foreach($REQUEST as $key => $value) {
 	if( is_array($value) ){
 		echo "<pre><strong>[$key]</strong></pre>\n";
@@ -38,10 +38,9 @@ foreach($REQUEST as $key => $value) {
 		echo "<pre>[<strong>".$key."</strong>]: [".$value."]</pre>";
 	}
 }
-*/
 
-echo debug_dump($path_info);
-echo debug_dump($REQUEST);
+
+
 
 //echo "<pre>".print_r($path_info)."</pre>";
 

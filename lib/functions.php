@@ -8,14 +8,13 @@
  *
 **/
 function debug_dump($data,$skip_null = false){
-	echo "<h1 class='debug'>Begin Debug</h1>";
+	$output = "\t<div id='debugging' class='debug'>\n\r";
+	$output .= "\t\t<h3>Debugging Info</h3>\n\r";
 	if ( is_string($data) ) {
-	// parse as <pre>
 		$output = "<p class='debug'>\n";
 		$output .= $data."\n";
 		$output .= "</p>\n";
 	} else if ( is_object($data) ) {
-		$output = "\t<div id='debugging' class='debug'>\n\r";
 		if($skip_null){
 			$output .= "\t\t<span ".'style="color:#f00;"'.">All null values being skipped</span>\n\r";
 		}
@@ -32,7 +31,6 @@ function debug_dump($data,$skip_null = false){
 	}	else {
 		if ( is_array(@$data[0]) ) {
 			foreach($data as $array) {
-				$output = "\t<div id='debugging' class='debug'>\n\r";
 				if($skip_null){
 					$output .= "\t\t<span>All null values being skipped</span>\n\r";
 				}
@@ -48,7 +46,6 @@ function debug_dump($data,$skip_null = false){
 				$output .= "\t</div>\n\r";
 			}
 		} else { // parse as $key => $value	
-			$output = "\t<div id='debugging' class='debug'>\n\r";
 			if($skip_null){
 				$output .= "\t\t<span>All null values being skipped</span>\n\r";
 			}
@@ -64,8 +61,9 @@ function debug_dump($data,$skip_null = false){
 			$output .= "\t</div>\n\r";
 		}
 	}
+	
 	return nl2br($output);
-
+	
 	//return $output;
 }
 
