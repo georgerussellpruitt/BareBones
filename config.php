@@ -9,10 +9,14 @@
  *
  * @author: George Russell Pruitt <pruitt.russell@gmail.com>
  *
- */
+**/
+
+// TODO REVAMP totally to pull most of this from database
 
 define("BAREBONES_CORE", true);
 
+// include functions for config
+include("lib/functions_config.php");
 
 
 // set the $CFG global object
@@ -25,41 +29,39 @@ $CFG->debug = true;
 
 // determine OS type
 $CFG->ostype = php_uname("s");
-if( $CFG->ostype == "Linux" || $CFG->ostype == "FreeBSD" || $CFG->ostype == "Unix")
-    {
-		$CFG->sep = "/";
-    }
-else
-    {
-        $CFG->sep = "\\";
-    }
+if( $CFG->ostype == "Linux" || $CFG->ostype == "FreeBSD" || $CFG->ostype == "Unix") {
+	$CFG->sep = "/";
+} else {
+	$CFG->sep = "\\";
+}
     
 
 // set configurations
-    $CFG->dbtype = "";
-    $CFG->dbname = "";
-    $CFG->dbhost = "";
-    $CFG->dbuser = "";
-    $CFG->dbpass = "";
-    $CFG->debug = true;
-    $CFG->ssl = false;
-    $CFG->domain = $_SERVER['SERVER_ADDR'];
-    $CFG->cwd = basename( __DIR__ );
-    $CFG->dataroot = __DIR__ . "/";
-	$CFG->url_base = $CFG->domain."/";
-	$CFG->not_retained = true;
-	if($CFG->not_retained) {
-		$CFG->url_base .= $CFG->cwd."/";
-	}
-    if($CFG->ssl) {
-        $CFG->url = "https://".$CFG->url_base;
-	} else {
-		$CFG->url = "http://".$CFG->url_base;
-	}
-	$CFG->style = $CFG->url."style/";
+$CFG->dbtype = "";
+$CFG->dbname = "";
+$CFG->dbhost = "";
+$CFG->dbuser = "";
+$CFG->dbpass = "";
+$CFG->debug = true;
+$CFG->ssl = false;
+$CFG->domain = $_SERVER['SERVER_ADDR'];
+$CFG->cwd = basename( __DIR__ );
+$CFG->dataroot = __DIR__ . "/";
+$CFG->url_base = $CFG->domain."/";
+$CFG->not_retained = false;
+if($CFG->not_retained) {
+	$CFG->url_base .= $CFG->cwd."/";
+}
+if($CFG->ssl) {
+	$CFG->url = "https://".$CFG->url_base;
+} else {
+	$CFG->url = "http://".$CFG->url_base;
+}
+$CFG->style = $CFG->url."style/";
 	
 if($CFG->debug) {
 	error_reporting(E_ALL); // Report all PHP errors (see changelog)
+	ini_set('error_reporting', E_ALL);
 } else { 
 	error_reporting(0);
 }
@@ -67,3 +69,5 @@ if($CFG->debug) {
 
 // system core
 include("core.php");
+
+// closing tag left off intentionally to prevent white space

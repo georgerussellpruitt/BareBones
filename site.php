@@ -13,3 +13,5 @@ $SITE = new stdClass(); // make into object
 
 // useful shortcut
 $SITE->lib = $CFG->dataroot."lib".$CFG->sep;
+
+// closing tag left off intentionally to prevent white space

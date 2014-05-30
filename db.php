@@ -19,4 +19,4 @@ switch($CFG->dbtype){
 $DB = new PDO($dsn, $CFG->dbuser, $$CFG->dbpass);
 
 
-?>
+// closing tag left off intentionally to prevent white space
