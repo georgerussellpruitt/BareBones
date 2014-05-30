@@ -17,10 +17,17 @@ class RequestController {
 	
 	public function __construct() {
 		//echo '<p>'. __CLASS__ . ' was initiated.</p>'; 
-		$this->process_request();
+		
+		// pull uri from server
 		if(isset( $_SERVER['REQUEST_URI'] )) {
 			$this->uri = utf8_decode(urldecode($_SERVER['REQUEST_URI']));
 		}
+		
+		// run process method
+		$this->process_request();
+		
+		// set main action
+		$this->main_action = $this->call_parts[0];
 	}
 
 	public function __destruct() {
@@ -54,7 +61,6 @@ class RequestController {
 				$t = explode('=', $var);
 				$this->query_parts[$t[0]] = $t[1];
 			}
-			
 		}
 	}
 
