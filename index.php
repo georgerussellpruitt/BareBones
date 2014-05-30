@@ -19,6 +19,9 @@ $DEBUG = 1;
 // call request controller
 include("lib/RequestController.php");
 
+// call site controller
+	// site controller handles $REQUEST and executes to the correct action
+
 echo get_header();
 
 
@@ -39,6 +42,8 @@ foreach($REQUEST as $key => $value) {
 
 echo debug_dump($path_info);
 echo debug_dump($REQUEST);
+
+//echo "<pre>".print_r($path_info)."</pre>";
 
 echo get_footer();
 ?>
