@@ -8,41 +8,53 @@ defined("BAREBONES_CORE") || die("External linking to the file is restricted");
 class RequestController {
 	
 	public $base = '';
-	public $call_utf8 = '';
 	public $call = '';
 	public $call_parts = array();
-	public $query_utf8 = '';
 	public $query = '';
-	public $query_vars = array();
-
+	public $query_parts = array();
+	public $uri = ''; // used as base through script
+	public $main_action = ''; // contains the main action call
+	
 	public function __construct() {
 		//echo '<p>'. __CLASS__ . ' was initiated.</p>'; 
-		$this->parse_path();
+		$this->process_request();
+		if(isset( $_SERVER['REQUEST_URI'] )) {
+			$this->uri = utf8_decode(urldecode($_SERVER['REQUEST_URI']));
+		}
 	}
 
 	public function __destruct() {
 		//
 	}
-	
-	private function parse_path() {
-		$path = array();
-		if (isset($_SERVER['REQUEST_URI'])) {
-			$request_path = explode('?', $_SERVER['REQUEST_URI']);
 
+	private function process_request(){
+		if(!empty($this->uri)){
+			
+			// breakdown uri by ?
+			$request_path = explode('?', $this->uri);
+			
+			// get requested script name (hopefully blank)
 			$this->base = rtrim(dirname($_SERVER['SCRIPT_NAME']), '\/');
-			$this->call_utf8 = substr(urldecode($request_path[0]), strlen($path['base']) + 1);
-			$this->call = utf8_decode($path['call_utf8']);
+			
+			// uri before the ?
+			$this->call = substr($request_path[0], strlen($this->base) + 1);
 			if ($this->call == basename($_SERVER['PHP_SELF'])) {
 				$this->call = '';
 			}
-			$this->call_parts = explode('/', $path['call']);
-			$this->query_utf8 = urldecode($request_path[1]);
-			$this->query = utf8_decode(urldecode($request_path[1]));
+			
+			// separate parts
+			$this->call_parts = explode('/', $this->call);
+			
+			// full query after the ?
+			$this->query = $request_path[1];
+
+			// query parts array
 			$vars = explode('&', $this->query);
 			foreach ($vars as $var) {
 				$t = explode('=', $var);
-				$this->query_vars[$t[0]] = $t[1];
+				$this->query_parts[$t[0]] = $t[1];
 			}
+			
 		}
 	}
 

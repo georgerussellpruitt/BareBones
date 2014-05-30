@@ -15,12 +15,14 @@ include("site.php");
 // call the functions
 include($SITE->lib."functions.php");
 
+/*
 // call old request controller
 include($SITE->lib."RequestController.php");
+*/
 
 // call the request handler
-// include($SITE->lib."RequestController.class.php");
-// $REQUEST = new RequestController();
+include($SITE->lib."RequestController.class.php");
+$REQUEST = new RequestController();
 
 // TODO call the site controller
 
