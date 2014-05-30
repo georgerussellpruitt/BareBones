@@ -9,10 +9,14 @@
  *
  * @author: George Russell Pruitt <pruitt.russell@gmail.com>
  *
- */
+**/
+
+// TODO REVAMP totally to pull most of this from database
 
 define("BAREBONES_CORE", true);
 
+// include functions for config
+include("lib/functions_config.php");
 
 
 // set the $CFG global object
