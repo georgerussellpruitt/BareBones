@@ -11,12 +11,10 @@ function debug_dump($data,$skip_null = false){
 	$output = "\t<div id='debugging' class='debug'>\n\r";
 	$output .= "\t\t<h3>Debugging Info</h3>\n\r";
 	if ( is_string($data) ) {
-		$output = "<p class='debug'>\n";
-		$output .= $data."\n";
-		$output .= "</p>\n";
+		$output = "<pre>$data</pre>\n";
 	} else if ( is_object($data) ) {
 		if($skip_null){
-			$output .= "\t\t<span ".'style="color:#f00;"'.">All null values being skipped</span>\n\r";
+			$output .= "\t\t<span>All null values being skipped</span>\n\r";
 		}
 		foreach ($data as $key => $value) {
 			if( $skip_null ){

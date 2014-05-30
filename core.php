@@ -24,9 +24,10 @@ include($SITE->lib."RequestController.php");
 include($SITE->lib."RequestController.class.php");
 $REQUEST = new RequestController();
 
-// TODO call the site controller
+// call the site / action controller
+include($SITE->lib."ActionController.class.php");
 
-// call the module loading system
-include($SITE->lib."ModuleHandler.class.php");
+// TODO call the module loading system
+
 
 // closing tag left off intentionally to prevent white space

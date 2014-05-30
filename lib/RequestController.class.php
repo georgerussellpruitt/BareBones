@@ -16,7 +16,6 @@ class RequestController {
 	public $main_action = ''; // contains the main action call
 	
 	public function __construct() {
-		//echo '<p>'. __CLASS__ . ' was initiated.</p>'; 
 		
 		// pull uri from server
 		if(isset( $_SERVER['REQUEST_URI'] )) {
@@ -65,3 +64,10 @@ class RequestController {
 	}
 
 }
+
+unset($REQUEST);
+$REQUEST = new RequestController();
+global $REQUEST;
+
+
+// closing tag left off intentionally to prevent white space
