@@ -7,4 +7,12 @@ padding: 0;
 	display:block;
 	background-color:#000;
 	color:#00FF00;
+	border-color:#00FF00;
+	border-style:solid;
+	width:60%;
+}
+
+.debug h3 {
+margin:0;
+padding:0;
 }
