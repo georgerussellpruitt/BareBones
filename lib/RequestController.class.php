@@ -26,7 +26,7 @@ class RequestController {
 		$this->process_request();
 		
 		// set main action
-		$this->main_action = $this->call_parts[0];
+		$this->main_action = $this->query_parts['action'];
 	}
 
 	public function __destruct() {
