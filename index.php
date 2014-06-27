@@ -19,7 +19,8 @@ $DEBUG = 1;
 
 echo get_header();
 
-echo debug_dump($REQUEST);
+echo debug_dump($REQUEST, get_var_name($REQUEST));
+echo debug_dump($ACTIONS, get_var_name($ACTIONS));
 
 echo get_footer();
 ?>
