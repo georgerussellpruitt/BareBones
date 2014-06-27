@@ -5,10 +5,17 @@
 
 defined("BAREBONES_CORE") || die("External linking to the file is restricted");
 
+global $REQUEST;
+
 class ActionController {
+	
+	// Variable Definitions
+	public $main_action 	= '';	// pulls in request's main action
+	public $request 			= '';	// request data
 
 	public function __construct() {
-		//
+		$this->main_action = $REQUEST->main_action;
+		$this->request = $REQUEST;
 	}
 
 	public function __destruct() {
