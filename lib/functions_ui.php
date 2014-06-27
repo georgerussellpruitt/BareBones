@@ -39,19 +39,19 @@ function get_header( $template = false ) {
 	$output .= "\n\r";
 	$output .= '<body>';
 	$output .= "\n\r";
-	$output .= '	<div id="container-wrapper">';
+	$output .= "\t<div id=\"container-wrapper\">";
 	$output .= "\n\r";
-	$output .= '		<div id="container">';
+	$output .= "\t\t<div id=\"container\">";
 	$output .= "\n\r";
-	$output .= '			<div id="header-wrapper">';
+	$output .= "\t\t\t<div id=\"header-wrapper\">";
 	$output .= "\n\r";
-	$output .= '				<div id="header"></div>';
+	$output .= "\t\t\t\t<div id=\"header\"></div>";
 	$output .= "\n\r";
-	$output .= '			</div>';
+	$output .= "\t\t\t</div>";
 	$output .= "\n\r";
-	$output .= '			<div id="content-wrapper">';
+	$output .= "\t\t\t<div id=\"content-wrapper\">";
 	$output .= "\n\r";
-	$output .= '				<div id="content">';
+	$output .= "\t\t\t\t<div id=\"content\">";
 	$output .= "\n\r";
 	return $output;
 }
@@ -66,19 +66,19 @@ function get_header( $template = false ) {
 function get_footer( $template = false ){
 	// TODO fix to pull templates
 	global $CFG;
-	$output = '					</div>';
+	$output = "\t\t\t\t</div>";
 	$output .= "\n\r";
-	$output .= '				</div>';
+	$output .= "\t\t\t</div>";
 	$output .= "\n\r";
-	$output .= '			</div>';
+	$output .= "\t\t</div>";
 	$output .= "\n\r";
-	$output .= '		</div>';
+	$output .= "\t</div>";
 	$output .= "\n\r";
-	$output .= '	</div>';
+//	$output .= "</div>";
+//	$output .= "\n\r";
+	$output .= "</body>";
 	$output .= "\n\r";
-	$output .= '</body>';
-	$output .= "\n\r";
-	$output .= '</html>';
+	$output .= "</html>";
 	return $output;
 }
 

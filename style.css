@@ -1,6 +1,18 @@
+body {
+margin: 0;
+padding: 0;
+}
+
 .debug {
 	display:block;
 	background-color:#000;
 	color:#00FF00;
-	padding:3px;
+	border-color:#00FF00;
+	border-style:solid;
+	width:60%;
+}
+
+.debug h3 {
+margin:0;
+padding:0;
 }
