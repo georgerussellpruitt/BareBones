@@ -6,9 +6,6 @@
  * @author George Russell Pruitt
  */
 
-// Grab all required Module Libraries
-require_once($SITE->lib."ModuleAction.class.php");
-
 class ModuleBase {
     
     // Variable Definitions
@@ -31,17 +28,4 @@ class ModuleBase {
         // code here
     }
 
-		public function createAction($name){
-			$this->actions[] = new ModuleAction($name);
-		}
-    
-    public function outputActions(){
-    	$outputActions = '';
-    	foreach($this->actions as $action){
-    		$outputActions .= $action->name."<br/>";
-    	}
-    	return $outputActions;
-    }
 }
-
-?>

@@ -11,6 +11,4 @@ require_once($SITE->lib."ModuleBase.class.php");
 
 $TestModule = new ModuleBase('test');
 
-$TestModule->createAction('test');
-
 ?>

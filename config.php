@@ -15,10 +15,6 @@
 
 define("BAREBONES_CORE", true);
 
-// include functions for config
-include("lib/functions_config.php");
-
-
 // set the $CFG global object
 unset($CFG);
 global $CFG; // make object globally accessible
@@ -33,8 +29,7 @@ if( $CFG->ostype == "Linux" || $CFG->ostype == "FreeBSD" || $CFG->ostype == "Uni
 	$CFG->sep = "/";
 } else {
 	$CFG->sep = "\\";
-}
-    
+}    
 
 // set configurations
 $CFG->dbtype = "";
