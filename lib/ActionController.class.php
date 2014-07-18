@@ -5,7 +5,6 @@
 
 defined("BAREBONES_CORE") || die("External linking to the file is restricted");
 
-global $REQUEST;
 
 class ActionController {
 	
@@ -13,7 +12,7 @@ class ActionController {
 	public $main_action 	= '';	// pulls in request's main action
 	public $request 			= '';	// request data
 
-	public function __construct() {
+	public function __construct($REQUEST) {
 		$this->main_action = $REQUEST->main_action;
 		$this->request = $REQUEST;
 	}
@@ -35,12 +34,12 @@ class ActionController {
 	
 	// load view method
 	public function load_view(){
-		//
+		// code goes here
 	}
-	
 }
 
 unset($ACTIONS);
-$ACTIONS = new ActionController();
+$ACTIONS = new ActionController($REQUEST);
 global $ACTIONS;
+
 // closing tag left off intentionally to prevent white space
