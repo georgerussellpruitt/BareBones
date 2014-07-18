@@ -15,10 +15,6 @@
 
 define("BAREBONES_CORE", true);
 
-// include functions for config
-include("lib/functions_config.php");
-
-
 // set the $CFG global object
 unset($CFG);
 global $CFG; // make object globally accessible
@@ -33,8 +29,7 @@ if( $CFG->ostype == "Linux" || $CFG->ostype == "FreeBSD" || $CFG->ostype == "Uni
 	$CFG->sep = "/";
 } else {
 	$CFG->sep = "\\";
-}
-    
+}    
 
 // set configurations
 $CFG->dbtype = "";
@@ -48,8 +43,8 @@ $CFG->domain = $_SERVER['SERVER_ADDR'];
 $CFG->cwd = basename( __DIR__ );
 $CFG->dataroot = __DIR__ . "/";
 $CFG->url_base = $CFG->domain."/";
-$CFG->not_retained = false;
-if($CFG->not_retained) {
+$CFG->retained = true;
+if($CFG->retained) {
 	$CFG->url_base .= $CFG->cwd."/";
 }
 if($CFG->ssl) {
@@ -58,6 +53,7 @@ if($CFG->ssl) {
 	$CFG->url = "http://".$CFG->url_base;
 }
 $CFG->style = $CFG->url."style/";
+
 	
 if($CFG->debug) {
 	error_reporting(E_ALL); // Report all PHP errors (see changelog)

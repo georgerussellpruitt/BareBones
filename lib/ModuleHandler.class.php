@@ -7,16 +7,16 @@ defined("BAREBONES_CORE") || die("External linking to the file is restricted");
 
 class ModuleHandler {
     
-    function __construct(){
+    private function __construct(){
         $this->modules = array();
     }
     
-    function __destruct(){
+    private function __destruct(){
         //
     }
 
 
-    function load($name){
+    public function load($name){
 		if( !$this->loaded($name) ){
 			// load plugin
 			$plugin_loc = $SITE->plugin.$name.".class.php";
@@ -35,7 +35,7 @@ class ModuleHandler {
 		return FALSE;
     }
 
-    function load2obj($name){
+    public function load2obj($name){
 		if (!$this->loaded($name)){
 			// load plugin and object
 			$plugin_loc = $SITE->plugin.$name.".class.php";
@@ -58,7 +58,7 @@ class ModuleHandler {
 		return FALSE;
     }
     
-    function loaded($name){
+    public function is_loaded($name){
         // check to see if previously loaded
 		if($this->modules[$name] != NULL && $this->modules[$name] == TRUE){
 			return TRUE;
@@ -66,7 +66,7 @@ class ModuleHandler {
 		else {
 			return FALSE;
 		}
-    }
+   }
 
 }
 

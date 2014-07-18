@@ -1,0 +1,12 @@
+TODO List for BareBones System
+
+- ActionController
+	- Finish full read of $REQUEST and access its variables correctly
+
+- Module System
+	- Finish base system to fully include error reporting
+	
+- Error & Exception Handling
+	- Begin work on Exception handling system (Conceptualize)
+	- Begin work on Error Handling (Conceptualize)
+
