@@ -11,4 +11,3 @@ require_once($SITE->lib."ModuleBase.class.php");
 
 $TestModule = new ModuleBase('test');
 
-?>

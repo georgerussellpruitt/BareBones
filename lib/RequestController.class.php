@@ -26,7 +26,11 @@ class RequestController {
 		$this->process_request();
 		
 		// set main action
-		$this->main_action = $this->query_parts['action'];
+		if( !empty($this->query_parts['action']) ) {
+			$this->main_action = $this->query_parts['action'];
+		} else {
+			$this->main_action = "home";
+		}
 	}
 
 	public function __destruct() {

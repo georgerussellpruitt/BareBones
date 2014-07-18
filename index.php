@@ -30,7 +30,9 @@ echo "main_action: [".$REQUEST->main_action."] <br/>";
 */
 include($SITE->lib."/mod/TestModule.class.php");
 
-echo "<p><strong>TestModule Actions:</strong><br/>".$TestModule->outputActions()."</p>";
+echo "<p><strong>TestModule Actions:</strong><br/>".$TestModule->name."</p>";
+
+echo "<p><em>ACTIONS->request</em>: ".$ACTIONS->request->main_action."</p>";
 
 echo "main_action: [".$ACTIONS->request->main_action."]<br/>";
 
