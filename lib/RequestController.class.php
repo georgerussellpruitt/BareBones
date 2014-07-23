@@ -26,7 +26,9 @@ class RequestController {
 		$this->process_request();
 		
 		// set main action
-		$this->main_action = $this->query_parts['action'];
+		if(!empty($this->query_parts['action'])){
+			$this->main_action = $this->query_parts['action'];
+		}
 	}
 
 	public function __destruct() {
@@ -67,7 +69,7 @@ class RequestController {
 
 unset($REQUEST);
 $REQUEST = new RequestController();
-global $REQUEST;
+//global $REQUEST;
 
 
 // closing tag left off intentionally to prevent white space

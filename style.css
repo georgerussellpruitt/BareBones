@@ -1,18 +1,39 @@
 body {
-margin: 0;
-padding: 0;
+	margin: 0;
+	padding: 0;
+}
+
+p {
+	margin: 0;
+	padding: 0;
+}
+
+h3 {
+	margin: 0;
+	padding: 0;
+}
+
+div {
+	margin: 0;
+	padding: 0;
 }
 
 .debug {
-	display:block;
 	background-color:#000;
 	color:#00FF00;
 	border-color:#00FF00;
 	border-style:solid;
-	width:60%;
 }
 
-.debug h3 {
-margin:0;
-padding:0;
+.debug strong {
+	color:#FF0000;
+}
+	
+
+.nested_debug {
+	background-color:#333;
+	color:#00FFFF;
+	border-color:#00FFFF;
+	border-style:solid;
+	margin:5px 5px 5px 5px;
 }

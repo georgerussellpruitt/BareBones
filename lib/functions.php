@@ -1,37 +1,15 @@
 <?php
 
-
 /*
- * debug_dump($data)
- * processes an array into html for debugging
+ * @script	functions.php
+ * @author: George Russell Pruitt <pruitt.russell@gmail.com>
+ * @library BareBones
+ *
+ * Functions file contains site-wide functions
+ *
 **/
-function debug_dump($data,$name = false,$skip_null = false){
-	$output = "\t<div id='debugging' class='debug'>\n\r";
-	if($name){
-		$output .= "\t\t<h3>Debugging Info for: $name</h3>\n\r";
-	} else {
-		$output .= "\t\t<h3>Debugging Info</h3>\n\r";
-	}
-	if ( is_string($data) ) {
-		$output = "<pre>$data</pre>\n";
-	} else { // parse as $key => $value	
-			if($skip_null){
-				$output .= "\t\t<span>All null values being skipped</span>\n\r";
-			}
-			foreach ($data as $key => $value) {
-				if( $skip_null ){
-					if( !empty($value) ) {
-						$output .= "\t\t[<strong>".$key."</strong>]: [".$value."] \n\r";
-					}
-				} else {
-					$output .= "\t\t[<strong>".$key."</strong>]: [".$value."] \n\r";
-				}
-			}
-			$output .= "\t</div>\n\r";
-		}
-	return nl2br($output);
-	//return $output;
-}
+
+
 
 /*
  * get_var_name($data)
@@ -52,6 +30,61 @@ function get_var_name(&$var) {
 
 	$var = $tmp;
 	return $ret;
+}
+
+
+/*
+ * debug_dump($data)
+ * processes a variable of any type into html for debugging
+**/
+function debug_dump($data,$name = false,$skip_null = false,$nested=false){
+	if($nested){
+		$output = "<div id='debugging' class='nested_debug'>";
+	} else {
+		$output = "<div id='debugging' class='debug'>";
+	}
+	if($name){
+		$output .= "<h3>Debugging Info for: $name</h3><br/>";
+	} else {
+		$output .= "<h3>Debugging Info</h3><br/>";
+	}
+	foreach($data as $key => $value){
+		switch(gettype($value)){
+			case "array":
+				if($nested){
+					$output .= "[<strong>".$key."</strong>]: [Array] <br/>";
+				} else {
+					$output.= debug_dump($value, $key, false, true)."<br/>";
+				}
+				break;
+			case "object":
+				$output.= "\t\t".debug_dump($value, $key, false, true)."<br/>";
+				break;
+			case "string":
+				$output .= "\t\t[<strong>".$key."</strong>]: [".$value."] <br/>";
+				break;
+			case "boolean":
+				$output .= "\t\t[<strong>".$key."</strong>]: [".$value."] <br/>";
+				break;
+			case "integer":
+				$output .= "\t\t[<strong>".$key."</strong>]: [".$value."] <br/>";
+				break;
+			case "double":
+				$output .= "\t\t[<strong>".$key."</strong>]: [".$value."] <br/>";
+				break;
+			case "resource":
+				$output .= "\t\t[<strong>".$key."</strong>]: [".$value."] <br/>";
+				break;
+			case "NULL":
+				$output .= "\t\t[<strong>".$key."</strong>]: [".$value."] <br/>";
+				break;
+			default:
+				$output.= "Variable [".$key."] is: UNKNOWN <br/>";
+				break;
+		}
+	}
+	$output .= "</div>";
+	return nl2br($output);
 }
 
 

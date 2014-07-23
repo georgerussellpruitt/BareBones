@@ -27,5 +27,9 @@ class ModuleBase {
     public function __destruct(){
         // code here
     }
+    
+    public function getName(){
+    	return $this->name;
+    }
 
 }
