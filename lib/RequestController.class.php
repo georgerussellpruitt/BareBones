@@ -26,10 +26,8 @@ class RequestController {
 		$this->process_request();
 		
 		// set main action
-		if( !empty($this->query_parts['action']) ) {
+		if(!empty($this->query_parts['action'])){
 			$this->main_action = $this->query_parts['action'];
-		} else {
-			$this->main_action = "home";
 		}
 	}
 
@@ -71,7 +69,7 @@ class RequestController {
 
 unset($REQUEST);
 $REQUEST = new RequestController();
-global $REQUEST;
+//global $REQUEST;
 
 
 // closing tag left off intentionally to prevent white space

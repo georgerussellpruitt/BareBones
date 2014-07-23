@@ -1,45 +1,58 @@
 <?php
 
 /**
- * Description of BareBones::ExceptionHandler
  *
- * @author George Russell Pruitt
- */
+ *
+ * @script	ExceptionHandler.class.php
+ * @author: George Russell Pruitt <pruitt.russell@gmail.com>
+ * @library BareBones
+ *
+ * This class allows the collection of exceptions and a nice
+ * way to handle them
+ *
+**/
+
+
+
 class ExceptionHandler {
 
-    protected $message = 'Unknown exception';   // exception message
-    private   $string;                          // __toString cache
-    protected $code = 0;                        // user defined exception code
-    protected $file;                            // source filename of exception
-    protected $line;                            // source line of exception
-    private   $trace;                           // backtrace
-    private   $previous;                        // previous exception if nested exception
+	public $errors = array();
 	
-    // put your declarations here
-    // constructor
-    function __construct() {
-        // code here
-    }
-
-    // destruct
-    function __destruct() {
-        // code here
-    }
-
-    // add an exception to stack
-    function add($e){
-        //
-        $this.errors($e);
-    }
+	// constructor
+	public function __construct() {
+	  // code here
+	}
 	
+	// destruct
+	public function __destruct() {
+	  // code here
+	}
+	
+	// add an exception to stack
+	public function add($e){
+	  $this->errors[] = $e;
+	}
+
 	// returns all errors
-	function print(){
+	public function display(){
 		$output = '';
-		foreach($this.errors as $error){
-			$output .= "<pre>The following file: <strong>".$error->file."</strong> produced an exception on line: <strong>".$error->line."</strong> with the following: <strong>".$error->code."</strong>: ".$error->message."</pre>";
+		foreach($this->errors as $error){
+			$output .= "<span class='error'>The following file: <strong>".$error->getFile()."</strong>";
+			$output .= " produced an exception on line: <strong>".$error->getLine()."</strong>";
+			$output .= " with the following message: <strong>".$error->getMessage()."</strong></span>";
 		}
 		return $output;
 	}
+
+	// check for errors
+	public function has_errors(){
+		if(sizeof($this->errors) > 0){
+			return true;
+		} else {
+			return false;
+		}
+	}
+
 }
 
-?>
+// closing tag left off intentionally to prevent white space

@@ -14,27 +14,16 @@
 // config
 include("config.php");
 
-$DEBUG = 1;
-
-
+// all preheader processing must be completed before the next line
 echo get_header();
 
-//echo debug_dump($ACTIONS, get_var_name($ACTIONS));
-
-/*
-foreach($REQUEST->query_parts as $key => $value){
-	echo "key: [".$key."] = [".$value."]<br/>";
-}
-echo "query_parts[0]: [".$REQUEST->query_parts[0]."] <br/>";
-echo "main_action: [".$REQUEST->main_action."] <br/>";
-*/
 include($SITE->lib."/mod/TestModule.class.php");
 
-echo "<p><strong>TestModule Actions:</strong><br/>".$TestModule->name."</p>";
 
-echo "<p><em>ACTIONS->request</em>: ".$ACTIONS->request->main_action."</p>";
+echo debug_dump($SITE);
 
-echo "main_action: [".$ACTIONS->request->main_action."]<br/>";
-
+if($SITE->error->has_errors()){
+	echo $SITE->error->display();
+}
 echo get_footer();
 ?>

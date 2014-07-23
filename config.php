@@ -40,8 +40,10 @@ $CFG->dbpass = "";
 $CFG->debug = true;
 $CFG->ssl = false;
 $CFG->domain = $_SERVER['SERVER_ADDR'];
-$CFG->cwd = basename( __DIR__ );
+//$CFG->cwd = basename( __DIR__ );
+$CFG->cwd = "barebones";
 $CFG->dataroot = __DIR__ . "/";
+//$CFG->dataroot = "barebones/";
 $CFG->url_base = $CFG->domain."/";
 $CFG->retained = true;
 if($CFG->retained) {
