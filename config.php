@@ -17,11 +17,10 @@ define("BAREBONES_CORE", true);
 
 // set the $CFG global object
 unset($CFG);
-global $CFG; // make object globally accessible
 $CFG = new stdClass(); // make into object
 
 // toggle DEBUG mode
-$CFG->debug = true;
+$CFG->debug = 1;
 
 // determine OS type
 $CFG->ostype = php_uname("s");
@@ -32,6 +31,7 @@ if( $CFG->ostype == "Linux" || $CFG->ostype == "FreeBSD" || $CFG->ostype == "Uni
 }    
 
 // set configurations
+$CFG->site_title = "BareBones Testing";
 $CFG->dbtype = "";
 $CFG->dbname = "";
 $CFG->dbhost = "";

@@ -2,85 +2,48 @@
 
 
 /*
- * 
  * get_header($template)
  *
  * pulls header uses default if none provided
- *
  */
-function get_header( $template = false ) {
-	global $CFG;
-	// TODO fix to pull templates
-	// following will be used later
-	/*
-	if($template) {
-		$filename = "";
+function get_header( $template = "default" ) {
+	global $SITE;
+	
+	$filename = $SITE->templates.$template.$SITE->CFG->sep."header.php";
+
+	if( file_exists($filename) ){
+		require($filename);
 	} else {
-		$filename = "";
+		throw new Exception("Couldn't load header file: [".$template."]");
 	}
-	$header_html = file_get_contents($filename);
-	return $header_html;
-	*/
-	$output = '<!DOCTYPE html>';
-	$output .= "\n\r";
-	$output .= '<html>';
-	$output .= "\n\r";
-	$output .= '<head>';
-	$output .= "\n\r";
-	$output .= '<title></title>';
-	$output .= "\n\r";
-	$output .= '<script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>';
-	$output .= "\n\r";
-	$output .= '<script src="https://code.jquery.com/ui/1.10.4/jquery-ui.min.js"></script>';
-	$output .= "\n\r";
-	$output .= '<link rel="stylesheet" type="text/css" href="'.$CFG->url.'style.css">';
-	$output .= "\n\r";
-	$output .= '</head>';
-	$output .= "\n\r";
-	$output .= '<body>';
-	$output .= "\n\r";
-	$output .= "\t<div id=\"container-wrapper\">";
-	$output .= "\n\r";
-	$output .= "\t\t<div id=\"container\">";
-	$output .= "\n\r";
-	$output .= "\t\t\t<div id=\"header-wrapper\">";
-	$output .= "\n\r";
-	$output .= "\t\t\t\t<div id=\"header\"></div>";
-	$output .= "\n\r";
-	$output .= "\t\t\t</div>";
-	$output .= "\n\r";
-	$output .= "\t\t\t<div id=\"content-wrapper\">";
-	$output .= "\n\r";
-	$output .= "\t\t\t\t<div id=\"content\">";
-	$output .= "\n\r";
-	return $output;
+
 }
 
 /*
- * 
  * get_footer($template)
  *
  * pulls footer uses default if none provided
- *
  */
-function get_footer( $template = false ){
-	// TODO fix to pull templates
-	global $CFG;
-	$output = "\t\t\t\t</div>";
-	$output .= "\n\r";
-	$output .= "\t\t\t</div>";
-	$output .= "\n\r";
-	$output .= "\t\t</div>";
-	$output .= "\n\r";
-	$output .= "\t</div>";
-	$output .= "\n\r";
-//	$output .= "</div>";
-//	$output .= "\n\r";
-	$output .= "</body>";
-	$output .= "\n\r";
-	$output .= "</html>";
-	return $output;
+function get_footer( $template = "default" ){
+	global $SITE;
+	
+	$filename = $SITE->templates.$template.$SITE->CFG->sep."footer.php";
+
+	if( file_exists($filename) ){
+		require($filename);
+	} else {
+		throw new Exception("Couldn't load footer file: [".$template."]");
+	}
 }
 
+/*
+ * get_title()
+ *
+ * pulls title from the $SITE->CFG->site_title
+ */
+
+function get_title(){
+	return $SITE->CFG->site_title;
+}
 
 // closing tag left off intentionally to prevent white space

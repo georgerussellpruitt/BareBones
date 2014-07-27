@@ -1,7 +1,15 @@
 <?php
+
 /*
+ * @script	ActionController.class.php
  * @author: George Russell Pruitt <pruitt.russell@gmail.com>
- */
+ * @library BareBones
+ *
+ * Main actions controller
+ *
+ * This class will handle all internal redirection based on the URI
+ *
+**/
 
 defined("BAREBONES_CORE") || die("External linking to the file is restricted");
 
@@ -9,9 +17,8 @@ defined("BAREBONES_CORE") || die("External linking to the file is restricted");
 class ActionController {
 	
 	// Variable Definitions
-	public $main_action 	= '';	// pulls in request's main action
-	public $request 			= '';	// request data
-
+	public $main_action 	= '';	// request's main action
+	private $request 			= '';	// $REQUEST object
 	public function __construct($REQUEST) {
 		$this->main_action = $REQUEST->main_action;
 		$this->request = $REQUEST;
@@ -21,25 +28,15 @@ class ActionController {
 		//
 	}
 	
-	// pull the action from the db
-	public function load_action($action){
-	
-		// TODO build sql
-		
-		// TODO execute query
-		
-		// TODO grab DB record
-
+	// loads view associated with action
+	public function load_view($action = "home"){
+		$action_loc = "view_".$action.".php";
+		return $action_loc;
 	}
 	
-	// load view method
-	public function load_view(){
-		// code goes here
-	}
 }
 
 unset($ACTIONS);
 $ACTIONS = new ActionController($REQUEST);
-global $ACTIONS;
 
 // closing tag left off intentionally to prevent white space

@@ -21,6 +21,7 @@ $SITE->CFG = $CFG;
 // useful shortcut
 $SITE->lib = $SITE->CFG->dataroot."lib".$SITE->CFG->sep;
 $SITE->mod = $SITE->lib."mod".$CFG->sep;
+$SITE->templates = $CFG->dataroot."templates".$CFG->sep;
 
 // exception handler
 include($SITE->lib."ExceptionHandler.class.php");
