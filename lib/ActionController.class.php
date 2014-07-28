@@ -15,10 +15,11 @@ defined("BAREBONES_CORE") || die("External linking to the file is restricted");
 
 
 class ActionController {
-	
+		
 	// Variable Definitions
 	public $main_action 	= '';	// request's main action
 	private $request 			= '';	// $REQUEST object
+
 	public function __construct($REQUEST) {
 		$this->main_action = $REQUEST->main_action;
 		$this->request = $REQUEST;
@@ -30,7 +31,8 @@ class ActionController {
 	
 	// loads view associated with action
 	public function load_view($action = "home"){
-		$action_loc = "view_".$action.".php";
+		global $SITE;
+		$action_loc = $SITE->template_include."view_".$action.".php";
 		return $action_loc;
 	}
 	

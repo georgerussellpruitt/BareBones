@@ -21,7 +21,13 @@ $SITE->CFG = $CFG;
 // useful shortcut
 $SITE->lib = $SITE->CFG->dataroot."lib".$SITE->CFG->sep;
 $SITE->mod = $SITE->lib."mod".$CFG->sep;
-$SITE->templates = $CFG->dataroot."templates".$CFG->sep;
+
+	// this is to be replaced with a value being read from database into $CFG
+	$SITE->CFG->current_template = "default";
+
+$SITE->template_include = $CFG->templates.$CFG->sep.$SITE->CFG->current_template.$CFG->sep;
+$SITE->template_url = $CFG->url."templates".$CFG->sep.$SITE->CFG->current_template.$CFG->sep;
+$SITE->CFG->style = $SITE->template_url."style.css";
 
 // exception handler
 include($SITE->lib."ExceptionHandler.class.php");

@@ -8,9 +8,7 @@
  */
 function get_header( $template = "default" ) {
 	global $SITE;
-	
-	$filename = $SITE->templates.$template.$SITE->CFG->sep."header.php";
-
+	$filename = $SITE->template_include."header.php";
 	if( file_exists($filename) ){
 		require($filename);
 	} else {
@@ -26,9 +24,7 @@ function get_header( $template = "default" ) {
  */
 function get_footer( $template = "default" ){
 	global $SITE;
-	
-	$filename = $SITE->templates.$template.$SITE->CFG->sep."footer.php";
-
+	$filename = $SITE->template_include."footer.php";
 	if( file_exists($filename) ){
 		require($filename);
 	} else {
@@ -43,6 +39,7 @@ function get_footer( $template = "default" ){
  */
 
 function get_title(){
+	global $SITE;
 	return $SITE->CFG->site_title;
 }
 

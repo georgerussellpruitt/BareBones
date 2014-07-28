@@ -43,7 +43,6 @@ $CFG->domain = $_SERVER['SERVER_ADDR'];
 //$CFG->cwd = basename( __DIR__ );
 $CFG->cwd = "barebones";
 $CFG->dataroot = __DIR__ . "/";
-//$CFG->dataroot = "barebones/";
 $CFG->url_base = $CFG->domain."/";
 $CFG->retained = true;
 if($CFG->retained) {
@@ -54,7 +53,7 @@ if($CFG->ssl) {
 } else {
 	$CFG->url = "http://".$CFG->url_base;
 }
-$CFG->style = $CFG->url."style/";
+$CFG->templates = $CFG->dataroot."templates".$CFG->sep;
 
 	
 if($CFG->debug) {
